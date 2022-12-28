@@ -39,6 +39,30 @@ def clean_text(text):
         cl_text= cl_text.replace(".-",".\n-")
     while ". -" in cl_text:
         cl_text= cl_text.replace(". -",".\n-")
+    while "?-" in cl_text:
+        cl_text = cl_text.replace("?-", "?\n-")
+    while "? -" in cl_text:
+        cl_text = cl_text.replace("? -", ".\n-")
+    while "!-" in cl_text:
+        cl_text = cl_text.replace("!-", "!\n-")
+    while "! -" in cl_text:
+        cl_text = cl_text.replace("! -", "!\n-")
+    while ":—" in cl_text:
+        cl_text = cl_text.replace(":—", ":\n—")
+    while ": —" in cl_text:
+        cl_text = cl_text.replace(": —", ":\n—")
+    while ".—" in cl_text:
+        cl_text = cl_text.replace(".—", ".\n—")
+    while ". —" in cl_text:
+        cl_text = cl_text.replace(". —", ".\n—")
+    while "?—" in cl_text:
+        cl_text = cl_text.replace("?—", "?\n—")
+    while "? —" in cl_text:
+        cl_text = cl_text.replace("? —", ".\n—")
+    while "!—" in cl_text:
+        cl_text = cl_text.replace("!—", "!\n—")
+    while "! —" in cl_text:
+        cl_text = cl_text.replace("! —", "!\n—")
     if "Анекдоты:" in cl_text:
         # Удаляем ненужное слово из анекдота
         cl_text = cl_text[cl_text.find(':') + 1:]
