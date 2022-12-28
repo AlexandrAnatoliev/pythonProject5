@@ -18,7 +18,7 @@ def open_text1(text):
     """
     file1 = open(text, encoding='utf-8')  # если файл находится не в проекте, то писать полный путь:
     # "C:/Users/Александр/OneDrive/Рабочий стол/python/FreelanceTask2/freelanceTask3/firstText.txt" (использ.:'/'!)
-    file1_read = list(file1.read().split(sep='\n'))  # сохраняет данные из файла в список в str формате
+    file1_read = list(file1.read().split(sep='\n\n'))  # сохраняет данные из файла в список в str формате
     file1.close()  # закрывает файл
     return file1_read
 
@@ -31,6 +31,14 @@ def clean_text(text):
     :return: чистый текст
     """
     cl_text = str(text)
+    while ":-" in cl_text:
+        cl_text= cl_text.replace(":-",":\n-")
+    while ": -" in cl_text:
+        cl_text= cl_text.replace(": -",":\n-")
+    while ".-" in cl_text:
+        cl_text= cl_text.replace(".-",".\n-")
+    while ". -" in cl_text:
+        cl_text= cl_text.replace(". -",".\n-")
     if "Анекдоты:" in cl_text:
         # Удаляем ненужное слово из анекдота
         cl_text = cl_text[cl_text.find(':') + 1:]
@@ -54,7 +62,7 @@ for joke in fun_list:
             break
     if fl_stop is False and joke != '':  # joke != '' - убираем пустые строки
         jokes.append(clean_text(joke))
-        file2.write(clean_text(joke) + '\n')
+        file2.write(clean_text(joke) + '\n\n')
 
 file2.close()  # закрывает файл
 print(jokes)
