@@ -31,6 +31,26 @@ def clean_text(text):
     :return: чистый текст
     """
     cl_text = str(text)
+    # Добавляем пробелы
+    cl_text = cl_text.replace(',', ', ')
+    while ',  ' in cl_text:
+        cl_text = cl_text.replace(',  ', ', ')
+    cl_text=cl_text.replace('.','. ')
+    while '.  ' in cl_text:
+        cl_text=cl_text.replace('.  ','. ')
+    cl_text = cl_text.replace('!', '! ')
+    while '!  ' in cl_text:
+        cl_text = cl_text.replace('!  ', '! ')
+    cl_text = cl_text.replace('?', '? ')
+    while '?  ' in cl_text:
+        cl_text = cl_text.replace('?  ', '? ')
+    cl_text = cl_text.replace(':', ': ')
+    while ':  ' in cl_text:
+        cl_text = cl_text.replace(':  ', ': ')
+    cl_text = cl_text.replace('. . .', '... ')
+    while '...  ' in cl_text:
+        cl_text = cl_text.replace('...  ', '... ')
+    # добавляем переносы
     while ":-" in cl_text:
         cl_text= cl_text.replace(":-",":\n-")
     while ": -" in cl_text:
@@ -39,6 +59,31 @@ def clean_text(text):
         cl_text= cl_text.replace(".-",".\n-")
     while ". -" in cl_text:
         cl_text= cl_text.replace(". -",".\n-")
+    while "?-" in cl_text:
+        cl_text = cl_text.replace("?-", "?\n-")
+    while "? -" in cl_text:
+        cl_text = cl_text.replace("? -", ".\n-")
+    while "!-" in cl_text:
+        cl_text = cl_text.replace("!-", "!\n-")
+    while "! -" in cl_text:
+        cl_text = cl_text.replace("! -", "!\n-")
+    while ":—" in cl_text:
+        cl_text = cl_text.replace(":—", ":\n—")
+    while ": —" in cl_text:
+        cl_text = cl_text.replace(": —", ":\n—")
+    while ".—" in cl_text:
+        cl_text = cl_text.replace(".—", ".\n—")
+    while ". —" in cl_text:
+        cl_text = cl_text.replace(". —", ".\n—")
+    while "?—" in cl_text:
+        cl_text = cl_text.replace("?—", "?\n—")
+    while "? —" in cl_text:
+        cl_text = cl_text.replace("? —", ".\n—")
+    while "!—" in cl_text:
+        cl_text = cl_text.replace("!—", "!\n—")
+    while "! —" in cl_text:
+        cl_text = cl_text.replace("! —", "!\n—")
+    # Удаляем ненужные слова
     if "Анекдоты:" in cl_text:
         # Удаляем ненужное слово из анекдота
         cl_text = cl_text[cl_text.find(':') + 1:]
