@@ -110,4 +110,5 @@ for joke in fun_list:
         file2.write(clean_text(joke) + '\n\n')
 
 file2.close()  # закрывает файл
+# странные проблемы
 print(jokes)
