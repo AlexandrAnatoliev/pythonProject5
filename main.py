@@ -96,7 +96,9 @@ def delete_chort_text(text1):
     :param text1: Список с рецептами
     :return: Список с рецептами
     """
-    if len(text1[:text1.index("PEЦEПT:")]) < 5:
+    if "PEЦEПT:" not in text1:
+        text2 = None
+    elif len(text1[:text1.index("PEЦEПT:")]) < 5:
         text2 = None
     elif len(text1[text1.index("PEЦEПT:"):]) < 5:
         text2 = None
@@ -127,6 +129,6 @@ jokes = []
 for recipe in fun_list:
     if delete_chort_text(recipe) != None:
         jokes.append(recipe)
-        file2.write(recipe + '\n\n')
+        file2.write(recipe + '\n\n\n')
 file2.close()  # закрывает файл
 print(jokes)
