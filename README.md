@@ -43,7 +43,19 @@ def clean_text(text):
         cl_text = cl_text[cl_text.find(':') + 1:]
     return cl_text
 ```
-
+#### Из текста 1 удаляет короткие и неполные рецепты
+```python
+def delete_chort_text(text1):
+    if "PEЦEПT:" not in text1:
+        text2 = None
+    elif len(text1[:text1.index("PEЦEПT:")]) < 5:
+        text2 = None
+    elif len(text1[text1.index("PEЦEПT:"):]) < 5:
+        text2 = None
+    else:
+        text2 = text1
+    return text2
+```
 #### Очищеная страница записывается в список 'jokes' и в текстовый файл 'secondText.txt'
 #### Записываем строки не содержащие слова из стоп-листа и не пустые "joke != ''"
 
