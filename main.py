@@ -107,7 +107,7 @@ def delete_chort_text(text1):
     return text2
 
 
-def search_women_verb(recipefunc, word_dict={}):  # todo DOKs
+def search_women_verb(recipefunc, word_dict={}):
     """
     Ищем в рецепте глаголы женского рода (сделаЛА), составояем словарь {сделаЛА:сделаЛ}
     :param recipefunc: входной рецепт
@@ -150,7 +150,7 @@ jokes = []
 #        jokes.append(recipe)
 #        file2.write(recipe + '\n\n\n')
 
-# этот блок переводит глаголы женского рода в мужской  todo DOKs
+# этот блок переводит глаголы женского рода в мужской
 # словарь с заменами слов
 word_d = {'пригoтoвилa': 'пригoтoвил', 'гoтoвилa': 'гoтoвил',
           'пeрecмoтрeлa': 'пeрecмoтрeл', 'coлилa': 'coлил',
