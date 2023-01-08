@@ -107,11 +107,29 @@ def delete_chort_text(text1):
     return text2
 
 
-fun_list = open_text1(open_txt)
-print(fun_list)
+def search_women_verb(recipefunc, word_dict={}):  # todo DOKs
+    """
+    Ищем в рецепте глаголы женского рода (сделаЛА), составояем словарь {сделаЛА:сделаЛ}
+    :param recipefunc: входной рецепт
+    :param word_dict: словарь входной
+    :return: выходной словарь
+    """
+    split_recipe = list(recipefunc.split())  # разделяем рецепт на слова
+    for word in split_recipe:
+        if '\n' in word:
+            while '\n' in word:
+                word = word.replace('\n', '')  # убираем переносы
+        if len(word) > 2:  # если слово не короткое
+            if word.lower()[-2:] == 'лa':  # 'a' - английская
+                word_dict[word] = word[:-1]  # добавляем в словарь "делаЛА:делаЛ"
+    return word_dict
 
+
+fun_list = open_text1(open_txt)
+#print(fun_list)
 file2 = open("secondText.txt", 'w', encoding='utf-8')  # создается файл, 'w' - запись файла
 
+# этот блок чистит текст
 # Очищеная страница записывается в список 'jokes' и в текстовый файл 'secondText.txt'
 jokes = []
 # for joke in fun_list:
@@ -126,9 +144,16 @@ jokes = []
 #       jokes.append(clean_text(joke))
 #       file2.write(clean_text(joke) + '\n\n')
 
+# этот блок удаляет короткие рецепты
+# for recipe in fun_list:
+#    if delete_chort_text(recipe) != None:
+#        jokes.append(recipe)
+#        file2.write(recipe + '\n\n\n')
+
+# этот блок переводит глаголы женского рода в мужской  todo DOKs
+word_d = {}  # словарь с заменами слов
 for recipe in fun_list:
-    if delete_chort_text(recipe) != None:
-        jokes.append(recipe)
-        file2.write(recipe + '\n\n\n')
+    word_d = search_women_verb(recipe, word_dict=word_d)
+
 file2.close()  # закрывает файл
-print(jokes)
+print(word_d)
