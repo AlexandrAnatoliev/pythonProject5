@@ -98,9 +98,9 @@ def delete_chort_text(text1):
     """
     if "PEЦEПT:" not in text1:
         text2 = None
-    elif len(text1[:text1.index("PEЦEПT:")]) < 5:
+    elif len(text1[:text1.index("PEЦEПT:")]) < 50:
         text2 = None
-    elif len(text1[text1.index("PEЦEПT:"):]) < 5:
+    elif len(text1[text1.index("PEЦEПT:"):]) < 100:
         text2 = None
     else:
         text2 = text1
@@ -136,7 +136,7 @@ def change_english_to_russian_letters(text):
     for char in d_chars:
         if char in text:
             while char in text:
-                text=text.replace(char,d_chars[char])
+                text = text.replace(char, d_chars[char])
     return text
 
 
@@ -160,10 +160,10 @@ jokes = []
 #       file2.write(clean_text(joke) + '\n\n')
 
 # этот блок удаляет короткие рецепты
-# for recipe in fun_list:
-#    if delete_chort_text(recipe) != None:
-#        jokes.append(recipe)
-#        file2.write(recipe + '\n\n\n')
+for recipe in fun_list:
+    if delete_chort_text(recipe) != None:
+        jokes.append(recipe)
+        file2.write(recipe + '\n\n\n')
 
 # этот блок переводит глаголы женского рода в мужской
 # словарь с заменами слов
@@ -173,9 +173,10 @@ jokes = []
 # file2.write(f"{word_d}" + '\n\n\n')
 
 # этот блок меняет английские заглавные буквы на русские
-for recipe in fun_list:
-    recipe = change_english_to_russian_letters(recipe)
-    file2.write(recipe + '\n\n\n')
+# for recipe in fun_list:
+#    recipe = change_english_to_russian_letters(recipe)
+#    file2.write(recipe + '\n\n\n')
+
 file2.close()  # закрывает файл
 # print(word_d)
 # print("Количество пар слов в словаре", len(word_d))
