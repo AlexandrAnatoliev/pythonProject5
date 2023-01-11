@@ -96,11 +96,11 @@ def delete_chort_text(text1):
     :param text1: Список с рецептами
     :return: Список с рецептами
     """
-    if "PEЦEПT:" not in text1:
+    if "РЕЦЕПТ:" not in text1:
         text2 = None
-    elif len(text1[:text1.index("PEЦEПT:")]) < 50:
+    elif len(text1[:text1.index("РЕЦЕПТ:")]) < 50:
         text2 = None
-    elif len(text1[text1.index("PEЦEПT:"):]) < 100:
+    elif len(text1[text1.index("РЕЦЕПТ:"):]) < 100:
         text2 = None
     else:
         text2 = text1
