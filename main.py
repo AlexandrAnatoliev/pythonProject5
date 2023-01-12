@@ -102,6 +102,8 @@ def delete_chort_text(text1):
         text2 = None
     elif len(text1[text1.index("РЕЦЕПТ:"):]) < 100:
         text2 = None
+    elif len(text1) < 250:
+        text2 = None
     else:
         text2 = text1
     return text2
@@ -164,7 +166,7 @@ for recipe in fun_list:
     if delete_chort_text(recipe) != None:
         jokes.append(recipe)
         file2.write(recipe + '\n\n\n')
-
+print("Количество рецептов ",len(jokes))
 # этот блок переводит глаголы женского рода в мужской
 # словарь с заменами слов
 # word_d = {}
